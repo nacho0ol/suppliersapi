@@ -20,3 +20,22 @@ Route::post('/piutang/bayar/{id}', [PiutangController::class, 'updatePembayaran'
 // Rute Pengeluaran Harian
 Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran.index');
 Route::post('/pengeluaran/store', [PengeluaranController::class, 'store'])->name('pengeluaran.store');
+
+use App\Http\Controllers\MasterDataController;
+
+// Rute Kelola Data (Master Data: Produk & Pelanggan)
+Route::get('/master', [MasterDataController::class, 'index'])->name('master.index');
+Route::post('/master/produk', [MasterDataController::class, 'storeProduk'])->name('master.produk.store');
+Route::delete('/master/produk/{id}', [MasterDataController::class, 'deleteProduk'])->name('master.produk.delete');
+Route::post('/master/pelanggan', [MasterDataController::class, 'storePelanggan'])->name('master.pelanggan.store');
+Route::delete('/master/pelanggan/{id}', [MasterDataController::class, 'deletePelanggan'])->name('master.pelanggan.delete');
+
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\ProfilController;
+
+// Rute Keuangan
+Route::get('/keuangan', [KeuanganController::class, 'index'])->name('keuangan.index');
+
+// Rute Profil
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+Route::put('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
